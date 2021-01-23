@@ -24,12 +24,14 @@ public class Brush {
     
     public void newBox(){
         Figura f = new Cuadrado(60, 80, 60, 40);
-        System.out.println("Cuadrado creado");
 	figures.add(f);
-        System.out.println("Cuadrado agregado");
     }
     public void newCircle(){
         Figura f = new Circulo(50,50,30);
+        figures.add(f);
+    }
+    public void newCuadrado(){
+        Figura f = new Cuadrado2(60,80,60,60);
         figures.add(f);
     }
     public void newTriangle(){

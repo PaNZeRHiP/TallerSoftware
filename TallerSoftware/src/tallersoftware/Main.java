@@ -107,11 +107,11 @@ public class Main {
                             }
                         });
                         Panel6.add(circle);
-                        JButton hexagon = new JButton("Hexagon");
+                        JButton hexagon = new JButton("Square");
                         hexagon.addActionListener(new ActionListener(){
                             @Override
                             public void actionPerformed(ActionEvent e){
-                                brush.newHexagon();
+                                brush.newCuadrado();
                                 canva.repaint();
                             }
                         });
