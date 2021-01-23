@@ -107,9 +107,33 @@ public class Main {
                             }
                         });
                         Panel6.add(circle);
-                        Panel6.add(new JButton("Hexagon"));
-                        Panel6.add(new JButton("Rombo"));
-                        Panel6.add(new JButton("Triangle squared"));
+                        JButton hexagon = new JButton("Hexagon");
+                        hexagon.addActionListener(new ActionListener(){
+                            @Override
+                            public void actionPerformed(ActionEvent e){
+                                brush.newHexagon();
+                                canva.repaint();
+                            }
+                        });
+                        Panel6.add(hexagon);
+                        JButton pentagon = new JButton("Pentagon");
+                        pentagon.addActionListener(new ActionListener(){
+                            @Override
+                            public void actionPerformed(ActionEvent e){
+                                brush.newPentagon();
+                                canva.repaint();
+                            }
+                        });
+                        Panel6.add(pentagon);
+                        JButton diamond = new JButton("Diamond");
+                        diamond.addActionListener(new ActionListener(){
+                            @Override
+                            public void actionPerformed(ActionEvent e){
+                                brush.newRombo();
+                                canva.repaint();
+                            }
+                        });
+                        Panel6.add(diamond);
                         Panel3.add(Panel6,BorderLayout.CENTER);
                     }
                 }

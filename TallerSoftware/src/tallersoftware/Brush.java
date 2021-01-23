@@ -36,6 +36,18 @@ public class Brush {
         Figura f = new Triangulo();
         figures.add(f);
     }
+    public void newPentagon(){
+        Figura f = new Pentagono();
+        figures.add(f);
+    }
+    public void newHexagon(){
+        Figura f = new Hexagono();
+        figures.add(f);
+    }
+    public void newRombo(){
+        Figura f = new Rombo();
+        figures.add(f);
+    }
     public void draw(Graphics2D g2){	
         for (Figura figure : figures) {
                 figure.draw(g2);
