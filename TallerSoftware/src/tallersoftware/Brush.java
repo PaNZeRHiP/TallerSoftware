@@ -30,6 +30,10 @@ public class Brush {
         Figura f = new Circulo(50,50,30);
         figures.add(f);
     }
+    public void newTriangle(){
+        Figura f = new Triangulo();
+        figures.add(f);
+    }
     public void draw(Graphics2D g2){	
         for (Figura figure : figures) {
                 figure.draw(g2);

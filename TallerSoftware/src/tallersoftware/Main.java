@@ -88,7 +88,15 @@ public class Main {
 			}
 		});
                         Panel6.add(square);
-                        Panel6.add(new JButton("Triangle"));
+                        JButton triangle = new JButton("Triangle");
+                        triangle.addActionListener(new ActionListener(){
+                            @Override
+                            public void actionPerformed(ActionEvent e){
+                                brush.newTriangle();
+                                canva.repaint();
+                            }
+                        });
+                        Panel6.add(triangle);
                         JButton circle = new JButton("Circle");
                         circle.addActionListener(new ActionListener(){
                             @Override
