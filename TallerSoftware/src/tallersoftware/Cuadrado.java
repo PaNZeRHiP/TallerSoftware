@@ -26,7 +26,7 @@ public class Cuadrado extends Figura{
     
     @Override
     protected void draw(Graphics2D g2){
-        g2.drawRect(x, y, w, h);
+        g2.fillRect(x, y, w, h);
     }
 
     @Override
@@ -44,7 +44,6 @@ public class Cuadrado extends Figura{
     public class HandleCenter extends Handle<Cuadrado>{
         public HandleCenter(Cuadrado c){
             super(c);
-            System.out.println("Handle center creado");
         }
 
         @Override
@@ -61,7 +60,6 @@ public class Cuadrado extends Figura{
         public boolean handleDrag(int x, int y) {
             x -= getParent().getW()/2;
             y -= getParent().getH();
-            System.out.println("Handle drag");
             return getParent().setPosition(x, y);
         }
     }
