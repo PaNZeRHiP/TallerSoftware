@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import java.time.LocalTime;
 
 /**
  *
@@ -66,7 +67,7 @@ public class Main {
                         save.addActionListener(new ActionListener(){
                             @Override
                             public void actionPerformed(ActionEvent e){
-                                saveImage(canva,new File("imagen.png"));
+                                saveImage(canva,new File("imagen"+LocalTime.now().getMinute()+"-"+LocalTime.now().getHour()+"-"+LocalTime.now().getSecond()+".png"));
                             }
                         });
                         Panel5.add(save);
@@ -77,7 +78,7 @@ public class Main {
                     {//Panel 6
                         JPanel Panel6 = new JPanel();
                         Panel6.setLayout(new GridLayout(3,2));
-                        JButton square = new JButton("Square");
+                        JButton square = new JButton("Box");
                         square.addActionListener(new ActionListener() {
 
 			@Override

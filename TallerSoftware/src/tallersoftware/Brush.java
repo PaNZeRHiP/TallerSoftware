@@ -24,7 +24,9 @@ public class Brush {
     
     public void newBox(){
         Figura f = new Cuadrado(60, 80, 60, 40);
+        System.out.println("Cuadrado creado");
 	figures.add(f);
+        System.out.println("Cuadrado agregado");
     }
     public void newCircle(){
         Figura f = new Circulo(50,50,30);

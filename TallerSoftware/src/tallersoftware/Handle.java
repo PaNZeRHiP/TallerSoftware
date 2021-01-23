@@ -15,7 +15,7 @@ import java.awt.Graphics2D;
  */
 public abstract class Handle<T> extends Figura {
     
-    private static final int w = 9, h = 9;
+    private static final int w = 10, h = 10;
     private T parent;
     
     protected Handle(T parent){
@@ -29,7 +29,7 @@ public abstract class Handle<T> extends Figura {
     @Override
     protected void draw(Graphics2D g2){
         Color old = g2.getColor();
-        g2.setColor(Color.red);
+        g2.setColor(Color.cyan);
         g2.drawRect(this.getCX()-(w/2), this.getCY()-(h/2), w, h);
         g2.setColor(old);
     }

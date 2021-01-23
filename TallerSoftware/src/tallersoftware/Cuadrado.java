@@ -44,6 +44,7 @@ public class Cuadrado extends Figura{
     public class HandleCenter extends Handle<Cuadrado>{
         public HandleCenter(Cuadrado c){
             super(c);
+            System.out.println("Handle center creado");
         }
 
         @Override
@@ -53,14 +54,14 @@ public class Cuadrado extends Figura{
 
         @Override
         protected int getCY() {
-            return getParent().getY() + getParent().getH()/2;
+            return getParent().getY() + getParent().getH();
         }
 
         @Override
         public boolean handleDrag(int x, int y) {
             x -= getParent().getW()/2;
-            y -= getParent().getH()/2;
-			
+            y -= getParent().getH();
+            System.out.println("Handle drag");
             return getParent().setPosition(x, y);
         }
     }

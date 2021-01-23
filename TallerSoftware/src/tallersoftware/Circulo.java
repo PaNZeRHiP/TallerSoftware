@@ -82,12 +82,12 @@ public class Circulo extends Figura{
 
         @Override
         protected int getCY() {
-            return getParent().getCY();
+            return getParent().getCY()+getParent().getRadio();
         }
 
         @Override
         public boolean handleDrag(int x, int y) {
-            return this.getParent().setPosition(x, y);
+            return this.getParent().setPosition(x, y-getParent().getRadio());
         }
     }
     
