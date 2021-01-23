@@ -23,7 +23,7 @@ public class Brush {
     public Brush(){}
     
     public void newBox(){
-        Figura f = new Cuadrado(60, 80, 60, 40);
+        Figura f = new Rectangulo(60, 80, 60, 40);
 	figures.add(f);
     }
     public void newCircle(){
@@ -31,7 +31,7 @@ public class Brush {
         figures.add(f);
     }
     public void newCuadrado(){
-        Figura f = new Cuadrado2(60,80,60,60);
+        Figura f = new Cuadrado(60,80,60);
         figures.add(f);
     }
     public void newTriangle(){
@@ -40,10 +40,6 @@ public class Brush {
     }
     public void newPentagon(){
         Figura f = new Pentagono();
-        figures.add(f);
-    }
-    public void newHexagon(){
-        Figura f = new Hexagono();
         figures.add(f);
     }
     public void newRombo(){

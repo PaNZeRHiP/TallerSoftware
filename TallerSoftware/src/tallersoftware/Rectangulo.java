@@ -9,15 +9,15 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author SrFib
+ * @author dougl
  */
-public class Cuadrado2 extends Figura{
+public class Rectangulo extends Figura{
     private int x;
     private int y;
     private int w;
     private int h;
     
-    public Cuadrado2(int x, int y, int w, int h){
+    public Rectangulo(int x, int y, int w, int h){
         this.x=x;
         this.y=y;
         this.w=w;
@@ -37,12 +37,12 @@ public class Cuadrado2 extends Figura{
     @Override
     public Figura[] generateHandles() {
         return new Figura[]{
-            new HandleBottomRight(this), new HandleCenter(this)
+            new HandleTopLeft(this), new HandleBottomRight(this), new HandleCenter(this)
         };
     }
     
-    public class HandleCenter extends Handle<Cuadrado2>{
-        public HandleCenter(Cuadrado2 c){
+    public class HandleCenter extends Handle<Rectangulo>{
+        public HandleCenter(Rectangulo c){
             super(c);
         }
 
@@ -64,9 +64,9 @@ public class Cuadrado2 extends Figura{
         }
     }
     
-    public class HandleTopLeft extends Handle<Cuadrado2>{
+    public class HandleTopLeft extends Handle<Rectangulo>{
 
-        public HandleTopLeft(Cuadrado2 parent) {
+        public HandleTopLeft(Rectangulo parent) {
             super(parent);
         }
 
@@ -90,9 +90,9 @@ public class Cuadrado2 extends Figura{
         } 
     }
     
-    public class HandleBottomRight extends Handle<Cuadrado2>{
+    public class HandleBottomRight extends Handle<Rectangulo>{
 
-        public HandleBottomRight(Cuadrado2 parent) {
+        public HandleBottomRight(Rectangulo parent) {
             super(parent);
         }
 
@@ -109,10 +109,10 @@ public class Cuadrado2 extends Figura{
 
         @Override
         public boolean handleDrag(int x, int y) {
-            int w2 = x - getParent().getX();
-            int h2 = x - getParent().getX();
+            int w = x - getParent().getX();
+            int h = y - getParent().getY();
 			
-            return getParent().setSize(w2, h2);
+            return getParent().setSize(w, h);
         }
     }
     

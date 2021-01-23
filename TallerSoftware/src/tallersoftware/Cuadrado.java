@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author dougl
+ * @author SrFib
  */
 public class Cuadrado extends Figura{
     private int x;
@@ -17,11 +17,11 @@ public class Cuadrado extends Figura{
     private int w;
     private int h;
     
-    public Cuadrado(int x, int y, int w, int h){
+    public Cuadrado(int x, int y, int w){
         this.x=x;
         this.y=y;
         this.w=w;
-        this.h=h;
+        this.h=w;
     }
     
     @Override
@@ -37,7 +37,7 @@ public class Cuadrado extends Figura{
     @Override
     public Figura[] generateHandles() {
         return new Figura[]{
-            new HandleTopLeft(this), new HandleBottomRight(this), new HandleCenter(this)
+            new HandleBottomRight(this), new HandleCenter(this)
         };
     }
     
@@ -109,10 +109,10 @@ public class Cuadrado extends Figura{
 
         @Override
         public boolean handleDrag(int x, int y) {
-            int w = x - getParent().getX();
-            int h = y - getParent().getY();
+            int w2 = x - getParent().getX();
+            int h2 = x - getParent().getX();
 			
-            return getParent().setSize(w, h);
+            return getParent().setSize(w2, h2);
         }
     }
     
