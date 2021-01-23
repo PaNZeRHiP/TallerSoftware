@@ -10,6 +10,8 @@ import java.awt.Button;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,17 +24,17 @@ import javax.swing.JPanel;
  * @author SrFib
  */
 public class Main {
-
+     private static Brush brush = new Brush();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         Main m = new Main();
-        m.menu();
+        m.menu(brush);
     }
 
-    private void menu() {
+    private void menu(Brush b) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1100, 650);
@@ -42,6 +44,8 @@ public class Main {
         JMenuBar menubar = new JMenuBar();
         menubar.add(new JMenu("File"));
         c.add(menubar);
+        JPanel canva = new Canvas(b);
+        c.add(canva,BorderLayout.CENTER);
         {//Panels on RootFrame
             JPanel Panel1 = new JPanel();
             Panel1.setLayout(new GridLayout(2,1));
@@ -61,7 +65,17 @@ public class Main {
                     {//Panel 6
                         JPanel Panel6 = new JPanel();
                         Panel6.setLayout(new GridLayout(3,2));
-                        Panel6.add(new JButton("Square"));
+                        JButton square = new JButton("Square");
+                        square.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				brush.newBox();
+				canva.repaint();
+			}
+		});
+                        Panel6.add(square);
                         Panel6.add(new JButton("Triangle"));
                         Panel6.add(new JButton("Circle"));
                         Panel6.add(new JButton("Hexagon"));
@@ -82,13 +96,16 @@ public class Main {
                 Panel1.add(Panel3);
                 Panel1.add(Panel4);
             }
-            JPanel Panel2 = new JPanel();
-            c.add(Panel2, BorderLayout.CENTER);
-            Panel2.setLayout(new BorderLayout());
-            Panel2.add(new JButton("Draw site"),BorderLayout.CENTER);
+            
+            //JPanel Panel2 = new JPanel();
+            //c.add(Panel2, BorderLayout.CENTER);
+            //Panel2.setLayout(new BorderLayout());
+            //Panel2.add(new JButton("Draw site"),BorderLayout.CENTER);
+            
+            
             
         }
     }
-    
+
     
 }
