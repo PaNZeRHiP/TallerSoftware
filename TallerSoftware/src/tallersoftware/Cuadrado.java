@@ -53,7 +53,7 @@ public class Cuadrado extends Figura{
 
         @Override
         protected int getCY() {
-            return getParent().getY() + getParent().getH() / 2;
+            return getParent().getY() + getParent().getH()/2;
         }
 
         @Override

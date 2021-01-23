@@ -16,34 +16,38 @@ import java.util.List;
  * @author SrFib
  */
 public class Brush {
-    private Handler<Figura> draggedHandle = null;
-    private List<Figure> figures = new ArrayList<Figure>();
-    private List<Figure> selectedFigures = new ArrayList<Figure>();
+    private Handle<Figura> draggedHandle = null;
+    private List<Figura> figures = new ArrayList<Figura>();
+    private List<Figura> selectedFigures = new ArrayList<Figura>();
     
     public Brush(){}
     
     public void newBox(){
-        Figure f = new Box(60, 80, 60, 40);
+        Figura f = new Cuadrado(60, 80, 60, 40);
 	figures.add(f);
     }
+    public void newCircle(){
+        Figura f = new Circulo(50,50,30);
+        figures.add(f);
+    }
     public void draw(Graphics2D g2){	
-        for (Figure figure : figures) {
+        for (Figura figure : figures) {
                 figure.draw(g2);
         }
     }
-    public Figure getFiguraAt(int x, int y)
+    public Figura getFiguraAt(int x, int y)
     {
-        for (Figure figure : figures) {
-            if (figure.isbeingTouched(x, y)){
+        for (Figura figure : figures) {
+            if (figure.hit(x, y)){
                 return figure;
             }
         }
         return null;
     }
-    public void selectFigura(Figure f)
+    public void selectFigura(Figura f)
     {
-        for (Figure figure : selectedFigures) {
-                figure.setSelected(false);
+        for (Figura figure : selectedFigures) {
+                figure.setSeleccionado(false);
         }
         selectedFigures.clear();
 
@@ -51,45 +55,43 @@ public class Brush {
 
         } else {
                 selectedFigures.add(f);
-                f.setSelected(true);
+                f.setSeleccionado(true);
         }
     }
     
     private void removeHandles()
     {
-        Iterator<Figure> it = figures.iterator();	
+        Iterator<Figura> it = figures.iterator();	
         while (it.hasNext()) {
-            Figure figure = it.next();
-            if (figure instanceof Handler) {
+            Figura figure = it.next();
+            if (figure instanceof Handle) {
                     it.remove();
             }
         }
     }
     public void handleMouseDown(int x, int y){
-        Figure f = getFiguraAt(x, y);
+        Figura f = getFiguraAt(x, y);
         if (f == null) {
             removeHandles();
             selectFigura(f);			
             return;
         }
 
-        if (f instanceof Handler) {
-            draggedHandle = (Handler<Figura>) f;
-            System.out.println("selected handle " + draggedHandle);
+        if (f instanceof Handle) {
+            draggedHandle = (Handle<Figura>) f;
+            
             return;
         }
 
-        System.out.println("selected figura " + f);
 
         if (f.isSelected()) {
-            System.out.println("already selected");
             return;
         }
 
         removeHandles();
         selectFigura(f);
 
-        Figure[] handles = f.createHandlers();
+        Figura[] handles = f.generateHandles();
         figures.addAll(Arrays.asList(handles));
     }
     public boolean handleMouseMove(int x, int y)
